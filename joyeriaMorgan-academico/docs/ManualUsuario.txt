@@ -1,0 +1,8 @@
+
+MANUAL DE USUARIO
+
+1. Ejecutar aplicación
+2. Abrir navegador en http://localhost:8080/joyas
+3. Click en Nueva Joya
+4. Llenar formulario
+5. Guardar

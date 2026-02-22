@@ -1,0 +1,12 @@
+
+Joya
+- id
+- nombre
+- tipo
+- material
+- precio
+- stock
+
+JoyaRepository -> JpaRepository
+JoyaService -> usa JoyaRepository
+JoyaController -> usa JoyaService

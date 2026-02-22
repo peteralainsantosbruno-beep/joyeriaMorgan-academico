@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventario de Joyas - Joyería Morgan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="bg-light">
+
+<div th:replace="~{fragments/navbar :: menu}"></div>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="fas fa-boxes me-2"></i>Inventario de Productos</h2>
+        <a th:href="@{/productos/nuevo}" class="btn btn-primary">
+            <i class="fas fa-plus-circle me-1"></i> Registrar Nueva Joya
+        </a>
+    </div>
+
+    <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fas fa-check-circle me-2"></i>
+        <span th:text="${success}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fas fa-exclamation-triangle me-2"></i>
+        <span th:text="${error}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th><i class="fas fa-hashtag me-1"></i> ID</th>
+                        <th><i class="fas fa-gem me-1"></i> Tipo</th>
+                        <th><i class="fas fa-layer-group me-1"></i> Material</th>
+                        <th><i class="fas fa-tag me-1"></i> Precio</th>
+                        <th><i class="fas fa-info-circle me-1"></i> Estado</th>
+                        <th class="text-center"><i class="fas fa-cogs me-1"></i> Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="p : ${productos}">
+                        <td th:text="${p.id}" class="fw-bold text-muted"></td>
+                        <td th:text="${p.tipo}"></td>
+                        <td th:text="${p.material}"></td>
+                        <td class="fw-bold" th:text="${'S/. ' + #numbers.formatDecimal(p.precio, 1, 2, 'COMMA')}"></td>
+                        <td>
+						    <span th:if="${p.estado.name() == 'DISPONIBLE'}" class="badge badge-disponible">
+                                <i class="fas fa-check me-1"></i> Disponible
+                            </span>
+						    <span th:if="${p.estado.name() == 'VENDIDO'}" class="badge badge-vendido">
+                                <i class="fas fa-hand-holding-usd me-1"></i> Vendido
+                            </span>
+						    <span th:if="${p.estado.name() == 'ANULADO'}" class="badge badge-anulado">
+                                <i class="fas fa-times me-1"></i> Anulado
+                            </span>
+						</td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+                                <a th:href="@{/productos/editar/{id}(id=${p.id})}" 
+                                   class="btn btn-warning btn-sm" title="Editar Producto">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                
+                                <a th:if="${p.estado.name() != 'ANULADO'}" 
+                                   th:href="@{/productos/eliminar/{id}(id=${p.id})}" 
+                                   class="btn btn-outline-danger btn-sm"
+                                   title="Anular Producto"
+                                   onclick="return confirm('¿Estás seguro de que deseas anular este producto?')">
+                                    <i class="fas fa-ban"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Venta - Joyería Morgan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="bg-light">
+
+<div th:replace="~{fragments/navbar :: menu}"></div>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h2 class="mb-0 h4">Nueva Venta</h2>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/ventas/guardar}" th:object="${venta}" method="post">
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Seleccionar Cliente</label>
+                            <select th:field="*{cliente.id}" class="form-select" required>
+                                <option value="" selected disabled>-- Seleccione un cliente --</option>
+                                <option th:each="c : ${clientes}" 
+                                        th:value="${c.id}" 
+                                        th:text="${c.nombres + ' ' + c.apellidos + ' (' + c.dni + ')'}">
+                                </option>
+                            </select>
+                            <div class="form-text">Si el cliente no existe, regístrelo primero en la sección de Clientes.</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Seleccionar Joya (Solo Disponibles)</label>
+                            <select th:field="*{producto.id}" class="form-select" required>
+                                <option value="" selected disabled>-- Seleccione una joya --</option>
+                                <option th:each="p : ${productos}" 
+                                        th:value="${p.id}" 
+                                        th:text="${p.tipo + ' ' + p.material + ' - S/. ' + p.precio}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="alert alert-info py-2">
+                            <small>Nota: La fecha y el total de la venta se calcularán automáticamente al procesar el pedido.</small>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-block">
+                            <button type="submit" class="btn btn-success px-5">Confirmar Venta</button>
+                            <a th:href="@{/ventas}" class="btn btn-secondary">Regresar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

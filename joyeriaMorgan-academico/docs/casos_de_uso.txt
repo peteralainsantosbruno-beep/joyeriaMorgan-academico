@@ -1,0 +1,17 @@
+
+CASOS DE USO — JOYERIA MORGAN
+
+Actor: Empleado
+
+CU01 Gestionar Joyas
+- Crear joya
+- Editar joya
+- Eliminar joya
+- Listar inventario
+
+CU02 Registrar Venta
+- Seleccionar joyas
+- Ingresar cantidades
+- Calcular total
+- Actualizar stock
+- Guardar venta

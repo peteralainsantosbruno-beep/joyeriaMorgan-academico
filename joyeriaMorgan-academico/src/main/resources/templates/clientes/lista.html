@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GESTION DE CLIENTES - Joyería Morgan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="bg-light">
+
+<div th:replace="~{fragments/navbar :: menu}"></div>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="fas fa-address-book me-2"></i>Directorio de Clientes</h2>
+        <a th:href="@{/clientes/nuevo}" class="btn btn-primary">
+            <i class="fas fa-user-plus me-1"></i> Registrar Nuevo Cliente
+        </a>
+    </div>
+
+    <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fas fa-check-circle me-2"></i>
+        <span th:text="${success}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fas fa-exclamation-triangle me-2"></i>
+        <span th:text="${error}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th><i class="fas fa-hashtag me-1"></i> ID</th>
+                        <th><i class="fas fa-user me-1"></i> Nombres y Apellidos</th>
+                        <th><i class="fas fa-id-card me-1"></i> DNI</th>
+                        <th><i class="fas fa-phone me-1"></i> Teléfono</th>
+                        <th><i class="fas fa-envelope me-1"></i> Correo</th>
+                        <th class="text-center"><i class="fas fa-tools me-1"></i> Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="c : ${clientes}">
+                        <td th:text="${c.id}" class="fw-bold"></td>
+                        <td th:text="${c.nombres + ' ' + c.apellidos}"></td>
+                        <td th:text="${c.dni}"></td>
+                        <td th:text="${c.telefono}"></td>
+                        <td th:text="${c.correo}"></td>
+                        <td class="text-center">
+                            <a th:href="@{/clientes/editar/{id}(id=${c.id})}" 
+                               class="btn btn-warning btn-sm" title="Editar Cliente">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            
+                            <a th:href="@{/clientes/eliminar/{id}(id=${c.id})}" 
+                               class="btn btn-danger btn-sm" title="Eliminar Cliente"
+                               onclick="return confirm('¿Está seguro de eliminar este cliente? Esta acción no se puede deshacer si tiene ventas asociadas.')">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(clientes)}">
+                        <td colspan="6" class="text-center text-muted py-4">
+                            <i class="fas fa-info-circle me-1"></i> No hay clientes registrados.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

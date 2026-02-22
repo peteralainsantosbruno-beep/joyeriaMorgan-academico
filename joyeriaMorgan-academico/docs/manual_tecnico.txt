@@ -1,0 +1,8 @@
+
+MANUAL TECNICO
+
+Proyecto Spring Boot MVC
+Java 17
+MySQL
+Importar como Maven Project en Eclipse
+Ejecutar JoyeriaMorganApp

@@ -1,0 +1,7 @@
+
+MANUAL DE USUARIO
+
+1 Abrir navegador
+2 Ir a http://localhost:8080/joyas
+3 Registrar joyas
+4 Consultar inventario

@@ -1,0 +1,13 @@
+
+MANUAL TECNICO
+
+Arquitectura MVC
+Spring Boot
+Thymeleaf
+MySQL
+
+Capas:
+Controller
+Service
+Repository
+Model

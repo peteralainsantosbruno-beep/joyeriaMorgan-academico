@@ -1,0 +1,9 @@
+
+DIAGRAMA DE CLASES (UML TEXTO)
+
+Joya(id,nombre,tipo,material,precio,stock)
+Venta(id,fecha,cliente,total)
+DetalleVenta(id,cantidad,precioUnitario,subtotal)
+
+Venta 1 --- * DetalleVenta
+Joya 1 --- * DetalleVenta

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Usuario - Joyería Morgan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="bg-light">
+
+<div th:replace="~{fragments/navbar :: menu}"></div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-dark text-white text-center py-3">
+                    <h2 class="h4 mb-0">
+                        <i th:class="${usuario.id == null ? 'fas fa-user-shield' : 'fas fa-user-edit'}" class="me-2 text-gold"></i>
+                        <span th:text="${usuario.id == null ? 'Nuevo Acceso' : 'Editar Usuario'}"></span>
+                    </h2>
+                </div>
+                <div class="card-body p-4">
+                    <form th:action="@{/usuarios/guardar}" th:object="${usuario}" method="post">
+                        
+                        <input type="hidden" th:field="*{id}"/>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-at me-2"></i>Nombre de Usuario</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="fas fa-user"></i></span>
+                                <input type="text" th:field="*{username}" class="form-control" 
+                                       placeholder="ej: juan.perez" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-key me-2"></i>Contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="fas fa-lock"></i></span>
+                                <input type="password" th:field="*{password}" class="form-control" 
+                                       placeholder="Mínimo 6 caracteres" required>
+                            </div>
+                            <div th:if="${usuario.id != null}" class="form-text text-warning mt-2">
+                                <i class="fas fa-exclamation-triangle me-1"></i> Deje la contraseña actual o escriba una nueva para cambiarla.
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold"><i class="fas fa-id-badge me-2"></i>Rol / Nivel de Permisos</label>
+                            <select th:field="*{rol}" class="form-select border-primary" required>
+                                <option value="" disabled selected>-- Seleccione un rol --</option>
+                                <option value="ADMIN">Administrador (Control Total)</option>
+                                <option value="VENDEDOR">Vendedor (Solo Ventas/Productos)</option>
+                            </select>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-save me-2"></i>Guardar Usuario
+                            </button>
+                            <a th:href="@{/usuarios}" class="btn btn-outline-secondary">
+                                <i class="fas fa-times me-2"></i>Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="text-center mt-3 text-muted">
+                <small><i class="fas fa-info-circle me-1"></i> Los usuarios creados podrán acceder mediante el Login.</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

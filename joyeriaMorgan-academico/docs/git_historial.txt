@@ -1,0 +1,8 @@
+
+# Historial Git simulado
+
+commit 1: estructura base spring boot
+commit 2: entidad joya
+commit 3: repositorio
+commit 4: controlador
+commit 5: vistas bootstrap

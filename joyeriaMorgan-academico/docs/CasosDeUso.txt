@@ -1,0 +1,16 @@
+
+CASOS DE USO — SISTEMA JOYERIA MORGAN
+
+Actor: Empleado
+
+CU01 — Registrar Joya
+Permite ingresar una nueva joya con nombre, tipo, material, precio y stock.
+
+CU02 — Listar Joyas
+Muestra todas las joyas registradas.
+
+CU03 — Eliminar Joya
+Permite borrar una joya del sistema.
+
+Flujo básico:
+Empleado → menú → inventario → operación → sistema guarda en BD.

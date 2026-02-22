@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+<nav th:fragment="menu" class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm custom-navbar">
+    <div class="container-fluid">
+
+        <a class="navbar-brand fw-bold" th:href="@{/dashboard}">
+            <i class="fas fa-gem text-gold me-2"></i><span class="text-gold">JOYERIA</span> MORGAN
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/dashboard}">
+                        <i class="fas fa-home me-1"></i> INICIO
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/productos}">
+                        <i class="fas fa-boxes me-1"></i> INVENTARIO
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/ventas}">
+                        <i class="fas fa-cash-register me-1"></i> VENTAS
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/clientes}">
+                        <i class="fas fa-users me-1"></i> CLIENTES
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/reportes}">
+                        <i class="fas fa-chart-line me-1"></i> REPORTES
+                    </a>
+                </li>
+
+                <li class="nav-item" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+                    <a class="nav-link text-warning" th:href="@{/usuarios}">
+                        <i class="fas fa-user-shield me-1"></i> USUARIOS
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
+			    <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+			        <a class="nav-link dropdown-toggle btn-outline-gold px-3 rounded" href="#" role="button" data-bs-toggle="dropdown">
+			             <i class="fas fa-user-circle me-1"></i>
+			             <span sec:authentication="name">USUARIO</span>
+			        </a>
+			        <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+			            <li class="px-3 py-2">
+			                <small class="text-muted d-block"><i class="fas fa-info-circle me-1"></i> Conectado como:</small>
+			                <span class="badge bg-dark" sec:authentication="principal.authorities[0]">ROL</span>
+			            </li>
+			            <li><hr class="dropdown-divider"></li>
+			            <li>
+			                <form th:action="@{/logout}" method="post">
+			                    <button type="submit" class="dropdown-item text-danger">
+			                        <i class="fas fa-sign-out-alt me-1"></i> Cerrar sesión
+			                    </button>
+			                </form>
+			            </li>
+			        </ul>
+			    </li>
+			</ul>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>
