@@ -23,6 +23,6 @@ public class LoginController {
 
     @GetMapping("/")
     public String index() {
-        return "redirect:/productos";
+        return "redirect:/dashboard";
     }
 }

@@ -52,7 +52,7 @@
                             <tbody>
                                 <tr th:each="venta : ${ventas}">
                                     <td class="ps-3 fw-bold text-muted" th:text="${venta.id}"></td>
-                                    <td th:text="${venta.fecha}"></td>
+                                    <td th:text="${#temporals.format(venta.fecha, 'dd/MM/yyyy')}"></td>
                                     <td>
                                         <i class="fas fa-user-circle text-secondary me-1"></i>
                                         <span th:text="${venta.cliente != null ? (venta.cliente.nombres + ' ' + venta.cliente.apellidos) : 'N/A'}"></span>

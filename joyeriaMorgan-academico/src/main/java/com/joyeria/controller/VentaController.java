@@ -60,16 +60,18 @@ public class VentaController {
     @GetMapping("/reportes")
     public String mostrarReportes(Model model) {
         List<Venta> listaVentas = ventaService.listarTodas();
+        System.out.println("CANTIDAD DE VENTAS: " + listaVentas.size());
         Double[] totalesMensuales = new Double[12];
         java.util.Arrays.fill(totalesMensuales, 0.0);
         String[] nombresMeses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
                                  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
-
+        
         for (Venta v : listaVentas) {
-            if (v.getFecha() != null) {
+            if (v.getFecha() != null && v.getTotal() != null) { // Valida AMBOS campos
                 int mesIndice = v.getFecha().getMonthValue() - 1;
                 totalesMensuales[mesIndice] += v.getTotal();
             }
+
         }
         
         model.addAttribute("ventas", listaVentas);

@@ -88,7 +88,7 @@ public class VentaServiceImpl implements VentaService {
                     : "Público General";
                 
                 tabla.addCell(nombreCompleto);
-                tabla.addCell(String.format("$%.2f", v.getTotal()));
+                tabla.addCell(String.format("S/.%.2f", v.getTotal()));
             }
 
             documento.add(tabla);
