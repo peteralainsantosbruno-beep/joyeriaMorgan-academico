@@ -16,12 +16,12 @@
     <div class="row">
         <div class="col-12">
             <h2 class="mb-4 text-dark text-uppercase fw-bold">
-                <i class="fas fa-chart-line me-2 text-warning"></i> Análisis de Rendimiento Mensual
+                <i class="fas fa-chart-line me-2 text-warning"> Análisis de Rendimiento Mensual</i>
             </h2>
             
             <div class="card shadow border-0 mb-4">
                 <div class="card-header bg-dark text-white">
-                    <h5 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Ventas Totales por Mes (S/.)</h5>
+                    <h5 class="mb-0"><i class="fas fa-chart-bar me-2">Ventas Totales por Mes (S/.)</i></h5>
                 </div>
                 <div class="card-body">
                     <div style="position: relative; height:40vh; width:100%">
@@ -32,9 +32,9 @@
 
             <div class="card shadow border-0">
                 <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0"><i class="fas fa-list-ul me-2"></i>Historial Detallado de Ventas</h5>
+                    <h5 class="mb-0"><i class="fas fa-list-ul me-2">Historial Detallado de Ventas</i></h5>
                     <a th:href="@{/ventas/reporte/pdf}" class="btn btn-danger btn-sm shadow-sm">
-                        <i class="fas fa-file-pdf me-1"></i> Descargar PDF
+                        <i class="fas fa-file-pdf me-1"> Descargar PDF</i>
                     </a>
                 </div>
                 <div class="card-body p-0">
@@ -42,11 +42,11 @@
                         <table class="table table-hover align-middle mb-0">
                             <thead class="table-light text-uppercase small fw-bold">
                                 <tr>
-                                    <th class="ps-3"><i class="fas fa-hashtag me-1"></i> ID</th>
-                                    <th><i class="fas fa-calendar-alt me-1"></i> Fecha</th>
-                                    <th><i class="fas fa-user me-1"></i> Cliente</th>
-                                    <th><i class="fas fa-gem me-1"></i> Producto</th>
-                                    <th class="pe-3"><i class="fas fa-coins me-1"></i> Total</th>
+                                    <th class="ps-3"><i class="fas fa-hashtag me-1"> ID</i></th>
+                                    <th><i class="fas fa-calendar-alt me-1"> Fecha</i></th>
+                                    <th><i class="fas fa-user me-1"> Cliente</i></th>
+                                    <th><i class="fas fa-gem me-1"> Producto</i></th>
+                                    <th class="pe-3"><i class="fas fa-coins me-1"> Total</i></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,8 +65,8 @@
                                 </tr>
                                 <tr th:if="${#lists.isEmpty(ventas)}">
                                     <td colspan="5" class="text-center py-5 text-muted">
-                                        <i class="fas fa-folder-open fa-2x d-block mb-2"></i>
-                                        No se encontraron registros en la base de datos.
+                                        <i class="fas fa-folder-open fa-2x d-block mb-2">
+                                        No se encontraron registros en la base de datos.</i>
                                     </td>
                                 </tr>
                             </tbody>

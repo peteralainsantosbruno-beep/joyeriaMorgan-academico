@@ -14,7 +14,7 @@
 
     <div class="container mt-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2><i class="fas fa-gem me-2"></i>Panel de Control - Joyería Morgan</h2>
+            <h2><i class="fas fa-gem me-2">Panel de Control - Joyería Morgan</i></h2>
             <span class="badge bg-dark p-2">
                 <i class="fas fa-clock me-1"></i>
                 <span th:text="${#dates.format(#dates.createNow(), 'dd/MM/yyyy')}"></span>
@@ -79,7 +79,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="card shadow-sm p-4 border-0 mb-4">
-                    <h5 class="mb-4 fw-bold"><i class="fas fa-chart-area me-2"></i>Flujo de Ventas Mensuales</h5>
+                    <h5 class="mb-4 fw-bold"><i class="fas fa-chart-area me-2">Flujo de Ventas Mensuales</i></h5>
                     <div style="height: 300px;">
                         <canvas id="ventasChart"></canvas>
                     </div>
@@ -88,9 +88,9 @@
 
             <div class="col-md-4">
                 <div class="card shadow-sm p-4 border-0">
-                    <h5 class="fw-bold mb-3"><i class="fas fa-list-alt me-2"></i>Resumen de Inventario</h5>
+                    <h5 class="fw-bold mb-3"><i class="fas fa-list-alt me-2">Resumen de Inventario</i></h5>
                     <div class="p-3 bg-light rounded mb-4 text-center border">
-                        <p class="text-muted small mb-1"><i class="fas fa-vault me-1"></i> VALOR TOTAL ESTIMADO</p>
+                        <p class="text-muted small mb-1"><i class="fas fa-vault me-1"> VALOR TOTAL ESTIMADO</i></p>
                         <h3 class="fw-bold">S/. <span th:text="${#numbers.formatDecimal(inventario, 1, 2)}">0.00</span></h3>
                     </div>
                     
@@ -98,15 +98,15 @@
 
                     <div class="d-grid gap-2">
                         <a th:href="@{/ventas/nueva}" class="btn btn-dark btn-lg mb-1">
-                            <i class="fas fa-cart-plus me-2"></i>Nueva Venta
+                            <i class="fas fa-cart-plus me-2">Nueva Venta</i>
                         </a>
                         <a th:href="@{/productos/nuevo}" class="btn btn-outline-dark btn-lg mb-3">
-                            <i class="fas fa-gem me-2"></i>Agregar Joya
+                            <i class="fas fa-gem me-2">Agregar Joya</i>
                         </a>
 
                         <div class="pt-2 border-top">
                             <a th:href="@{/ventas/reporte/pdf}" class="btn btn-danger btn-lg w-100">
-                                <i class="fas fa-file-pdf me-2"></i>Descargar PDF
+                                <i class="fas fa-file-pdf me-2">Descargar PDF</i>
                             </a>
                         </div>
                     </div>

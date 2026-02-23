@@ -13,9 +13,9 @@
 
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2><i class="fas fa-address-book me-2"></i>Directorio de Clientes</h2>
+        <h2><i class="fas fa-address-book me-2">Directorio de Clientes</i></h2>
         <a th:href="@{/clientes/nuevo}" class="btn btn-primary">
-            <i class="fas fa-user-plus me-1"></i> Registrar Nuevo Cliente
+            <i class="fas fa-user-plus me-1"> Registrar Nuevo Cliente</i>
         </a>
     </div>
 
@@ -35,12 +35,12 @@
             <table class="table table-hover align-middle mb-0">
                 <thead class="table-dark">
                     <tr>
-                        <th><i class="fas fa-hashtag me-1"></i> ID</th>
-                        <th><i class="fas fa-user me-1"></i> Nombres y Apellidos</th>
-                        <th><i class="fas fa-id-card me-1"></i> DNI</th>
-                        <th><i class="fas fa-phone me-1"></i> Teléfono</th>
-                        <th><i class="fas fa-envelope me-1"></i> Correo</th>
-                        <th class="text-center"><i class="fas fa-tools me-1"></i> Acciones</th>
+                        <th><i class="fas fa-hashtag me-1"> ID</i></th>
+                        <th><i class="fas fa-user me-1"> Nombres y Apellidos</i></th>
+                        <th><i class="fas fa-id-card me-1">DNI</i></th>
+                        <th><i class="fas fa-phone me-1"> Teléfono</i></th>
+                        <th><i class="fas fa-envelope me-1"> Correo</i></th>
+                        <th class="text-center"><i class="fas fa-tools me-1"> Acciones</i></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,19 +53,19 @@
                         <td class="text-center">
                             <a th:href="@{/clientes/editar/{id}(id=${c.id})}" 
                                class="btn btn-warning btn-sm" title="Editar Cliente">
-                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-edit">Editar Cliente</i>
                             </a>
                             
                             <a th:href="@{/clientes/eliminar/{id}(id=${c.id})}" 
                                class="btn btn-danger btn-sm" title="Eliminar Cliente"
                                onclick="return confirm('¿Está seguro de eliminar este cliente? Esta acción no se puede deshacer si tiene ventas asociadas.')">
-                                <i class="fas fa-trash-alt"></i>
+                                <i class="fas fa-trash-alt">Eliminar Cliente</i>
                             </a>
                         </td>
                     </tr>
                     <tr th:if="${#lists.isEmpty(clientes)}">
                         <td colspan="6" class="text-center text-muted py-4">
-                            <i class="fas fa-info-circle me-1"></i> No hay clientes registrados.
+                            <i class="fas fa-info-circle me-1"> No hay clientes registrados.</i>
                         </td>
                     </tr>
                 </tbody>

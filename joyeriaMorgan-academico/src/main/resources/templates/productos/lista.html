@@ -13,9 +13,9 @@
 
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2><i class="fas fa-boxes me-2"></i>Inventario de Productos</h2>
+        <h2><i class="fas fa-boxes me-2">Inventario de Productos</i></h2>
         <a th:href="@{/productos/nuevo}" class="btn btn-primary">
-            <i class="fas fa-plus-circle me-1"></i> Registrar Nueva Joya
+            <i class="fas fa-plus-circle me-1"> Registrar Nueva Joya</i>
         </a>
     </div>
 
@@ -35,12 +35,12 @@
             <table class="table table-hover align-middle mb-0">
                 <thead class="table-dark">
                     <tr>
-                        <th><i class="fas fa-hashtag me-1"></i> ID</th>
-                        <th><i class="fas fa-gem me-1"></i> Tipo</th>
-                        <th><i class="fas fa-layer-group me-1"></i> Material</th>
-                        <th><i class="fas fa-tag me-1"></i> Precio</th>
-                        <th><i class="fas fa-info-circle me-1"></i> Estado</th>
-                        <th class="text-center"><i class="fas fa-cogs me-1"></i> Acciones</th>
+                        <th><i class="fas fa-hashtag me-1"> ID</i></th>
+                        <th><i class="fas fa-gem me-1"> Tipo</i></th>
+                        <th><i class="fas fa-layer-group me-1"> Material</i></th>
+                        <th><i class="fas fa-tag me-1"> Precio</i></th>
+                        <th><i class="fas fa-info-circle me-1"> Estado</i></th>
+                        <th class="text-center"><i class="fas fa-cogs me-1"> Acciones</i></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,20 +51,20 @@
                         <td class="fw-bold" th:text="${'S/. ' + #numbers.formatDecimal(p.precio, 1, 2, 'COMMA')}"></td>
                         <td>
 						    <span th:if="${p.estado.name() == 'DISPONIBLE'}" class="badge badge-disponible">
-                                <i class="fas fa-check me-1"></i> Disponible
+                                <i class="fas fa-check me-1"> Disponible</i>
                             </span>
 						    <span th:if="${p.estado.name() == 'VENDIDO'}" class="badge badge-vendido">
-                                <i class="fas fa-hand-holding-usd me-1"></i> Vendido
+                                <i class="fas fa-hand-holding-usd me-1"> Vendido</i>
                             </span>
 						    <span th:if="${p.estado.name() == 'ANULADO'}" class="badge badge-anulado">
-                                <i class="fas fa-times me-1"></i> Anulado
+                                <i class="fas fa-times me-1"> Anulado</i>
                             </span>
 						</td>
                         <td class="text-center">
                             <div class="btn-group" role="group">
                                 <a th:href="@{/productos/editar/{id}(id=${p.id})}" 
                                    class="btn btn-warning btn-sm" title="Editar Producto">
-                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-edit">Editar Producto</i>
                                 </a>
                                 
                                 <a th:if="${p.estado.name() != 'ANULADO'}" 
@@ -72,7 +72,7 @@
                                    class="btn btn-outline-danger btn-sm"
                                    title="Anular Producto"
                                    onclick="return confirm('¿Estás seguro de que deseas anular este producto?')">
-                                    <i class="fas fa-ban"></i>
+                                    <i class="fas fa-ban">Eliminar Producto</i>
                                 </a>
                             </div>
                         </td>

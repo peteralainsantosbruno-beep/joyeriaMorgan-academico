@@ -27,7 +27,7 @@
                         <input type="hidden" th:field="*{id}"/>
 
                         <div class="mb-3">
-                            <label class="form-label fw-bold"><i class="fas fa-at me-2"></i>Nombre de Usuario</label>
+                            <label class="form-label fw-bold"><i class="fas fa-at me-2">Nombre de Usuario</i></label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light"><i class="fas fa-user"></i></span>
                                 <input type="text" th:field="*{username}" class="form-control" 
@@ -36,19 +36,19 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label fw-bold"><i class="fas fa-key me-2"></i>Contraseña</label>
+                            <label class="form-label fw-bold"><i class="fas fa-key me-2">Contraseña</i></label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light"><i class="fas fa-lock"></i></span>
                                 <input type="password" th:field="*{password}" class="form-control" 
                                        placeholder="Mínimo 6 caracteres" required>
                             </div>
                             <div th:if="${usuario.id != null}" class="form-text text-warning mt-2">
-                                <i class="fas fa-exclamation-triangle me-1"></i> Deje la contraseña actual o escriba una nueva para cambiarla.
+                                <i class="fas fa-exclamation-triangle me-1"> Deje la contraseña actual o escriba una nueva para cambiarla.</i>
                             </div>
                         </div>
 
                         <div class="mb-4">
-                            <label class="form-label fw-bold"><i class="fas fa-id-badge me-2"></i>Rol / Nivel de Permisos</label>
+                            <label class="form-label fw-bold"><i class="fas fa-id-badge me-2">Rol / Nivel de Permisos</i></label>
                             <select th:field="*{rol}" class="form-select border-primary" required>
                                 <option value="" disabled selected>-- Seleccione un rol --</option>
                                 <option value="ADMIN">Administrador (Control Total)</option>
@@ -58,10 +58,10 @@
 
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary btn-lg">
-                                <i class="fas fa-save me-2"></i>Guardar Usuario
+                                <i class="fas fa-save me-2">Guardar Usuario</i>
                             </button>
                             <a th:href="@{/usuarios}" class="btn btn-outline-secondary">
-                                <i class="fas fa-times me-2"></i>Cancelar
+                                <i class="fas fa-times me-2">Cancelar</i>
                             </a>
                         </div>
                     </form>
@@ -69,7 +69,7 @@
             </div>
             
             <div class="text-center mt-3 text-muted">
-                <small><i class="fas fa-info-circle me-1"></i> Los usuarios creados podrán acceder mediante el Login.</small>
+                <small><i class="fas fa-info-circle me-1"> Los usuarios creados podrán acceder mediante el Login.</i></small>
             </div>
         </div>
     </div>

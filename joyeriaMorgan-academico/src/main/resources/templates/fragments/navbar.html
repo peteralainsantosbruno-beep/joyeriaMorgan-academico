@@ -19,33 +19,33 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/dashboard}">
-                        <i class="fas fa-home me-1"></i> INICIO
+                        <i class="fas fa-home me-1"> INICIO</i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/productos}">
-                        <i class="fas fa-boxes me-1"></i> INVENTARIO
+                        <i class="fas fa-boxes me-1"> INVENTARIO</i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/ventas}">
-                        <i class="fas fa-cash-register me-1"></i> VENTAS
+                        <i class="fas fa-cash-register me-1"> VENTAS</i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/clientes}">
-                        <i class="fas fa-users me-1"></i> CLIENTES
+                        <i class="fas fa-users me-1"> CLIENTES</i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/ventas/reportes}">
-                        <i class="fas fa-chart-line me-1"></i> REPORTES
+                        <i class="fas fa-chart-line me-1"> REPORTES</i>
                     </a>
                 </li>
 
                 <li class="nav-item" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
                     <a class="nav-link text-warning" th:href="@{/usuarios}">
-                        <i class="fas fa-user-shield me-1"></i> USUARIOS
+                        <i class="fas fa-user-shield me-1"> USUARIOS</i>
                     </a>
                 </li>
             </ul>
@@ -58,14 +58,14 @@
 			        </a>
 			        <ul class="dropdown-menu dropdown-menu-end shadow border-0">
 			            <li class="px-3 py-2">
-			                <small class="text-muted d-block"><i class="fas fa-info-circle me-1"></i> Conectado como:</small>
+			                <small class="text-muted d-block"><i class="fas fa-info-circle me-1"> Conectado como:</i></small>
 			                <span class="badge bg-dark" sec:authentication="principal.authorities[0]">ROL</span>
 			            </li>
 			            <li><hr class="dropdown-divider"></li>
 			            <li>
 			                <form th:action="@{/logout}" method="post">
 			                    <button type="submit" class="dropdown-item text-danger">
-			                        <i class="fas fa-sign-out-alt me-1"></i> Cerrar sesión
+			                        <i class="fas fa-sign-out-alt me-1"> Cerrar sesión</i>
 			                    </button>
 			                </form>
 			            </li>

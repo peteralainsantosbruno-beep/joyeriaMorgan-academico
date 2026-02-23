@@ -12,16 +12,16 @@
 
 <div class="card p-4 shadow-lg login-card border-0" style="width: 380px;">
     <div class="text-center mb-4">
-        <h2 class="fw-bold text-dark"><i class="fas fa-gem text-gold"></i> Joyería</h2>
+        <h2 class="fw-bold text-dark"><i class="fas fa-gem text-gold"> Joyería</i></h2>
         <h4 class="text-muted text-uppercase small tracking-widest">Morgan</h4>
     </div>
 
     <div th:if="${param.error}" class="alert alert-danger py-2 text-center shadow-sm" role="alert">
-        <small><i class="fas fa-exclamation-circle me-1"></i> Usuario o contraseña incorrectos</small>
+        <small><i class="fas fa-exclamation-circle me-1"> Usuario o contraseña incorrectos</i></small>
     </div>
 
     <div th:if="${param.logout}" class="alert alert-success py-2 text-center shadow-sm" role="alert">
-        <small><i class="fas fa-check-circle me-1"></i> Sesión cerrada correctamente</small>
+        <small><i class="fas fa-check-circle me-1"> Sesión cerrada correctamente</i></small>
     </div>
 
     <form th:action="@{/login}" method="post">
@@ -48,13 +48,13 @@
         </div>
 
         <button type="submit" class="btn btn-gold w-100 py-2 fw-bold mt-3 shadow-sm">
-            <i class="fas fa-sign-in-alt me-2"></i>INGRESAR AL SISTEMA
+            <i class="fas fa-sign-in-alt me-2">INGRESAR AL SISTEMA</i>
         </button>
     </form>
     
     <div class="text-center mt-4">
         <small class="text-muted text-uppercase" style="font-size: 0.7rem;">
-            <i class="fas fa-shield-alt me-1"></i> &copy; 2026 Joyería Morgan - Intranet
+            <i class="fas fa-shield-alt me-1"> &copy; 2026 Joyería Morgan - Intranet</i>
         </small>
     </div>
 </div>

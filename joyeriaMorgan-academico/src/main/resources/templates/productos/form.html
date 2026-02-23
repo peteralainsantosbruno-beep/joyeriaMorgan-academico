@@ -26,59 +26,59 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label fw-bold"><i class="fas fa-shapes me-2"></i>Tipo</label>
+                        <label class="form-label fw-bold"><i class="fas fa-shapes me-2">Tipo</i></label>
                         <input type="text" th:field="*{tipo}" class="form-control" th:errorclass="'is-invalid'" placeholder="Ej: Anillo, Collar...">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></div>
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label class="form-label fw-bold"><i class="fas fa-fill-drip me-2"></i>Material</label>
+                        <label class="form-label fw-bold"><i class="fas fa-fill-drip me-2">Material</i></label>
                         <input type="text" th:field="*{material}" class="form-control" th:errorclass="'is-invalid'" placeholder="Ej: Oro 18k, Plata 950...">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></div>
                     </div>
 
                     <div class="col-12 mb-3">
-                        <label class="form-label fw-bold"><i class="fas fa-align-left me-2"></i>Descripción Corta</label>
+                        <label class="form-label fw-bold"><i class="fas fa-align-left me-2">Descripción Corta</i></label>
                         <input type="text" th:field="*{descripcion}" class="form-control" placeholder="Nombre comercial del producto">
                     </div>
 
                     <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold"><i class="fas fa-certificate me-2"></i>Quilates</label>
+                        <label class="form-label fw-bold"><i class="fas fa-certificate me-2">Quilates</i></label>
                         <input type="number" step="0.01" th:field="*{quilates}" class="form-control" th:errorclass="'is-invalid'">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('quilates')}" th:errors="*{quilates}"></div>
                     </div>
 
                     <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold"><i class="fas fa-weight-hanging me-2"></i>Peso (gr)</label>
+                        <label class="form-label fw-bold"><i class="fas fa-weight-hanging me-2">Peso (gr)</i></label>
                         <input type="number" step="0.01" th:field="*{peso}" class="form-control" th:errorclass="'is-invalid'">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('peso')}" th:errors="*{peso}"></div>
                     </div>
 
                     <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold"><i class="fas fa-tag me-2"></i>Precio (S/.)</label>
+                        <label class="form-label fw-bold"><i class="fas fa-tag me-2">Precio (S/.)</i></label>
                         <input type="number" step="0.01" th:field="*{precio}" class="form-control" th:errorclass="'is-invalid'">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
                     </div>
 
                     <div class="col-md-12 mb-3" th:if="${producto.id != null}">
-                        <label class="form-label fw-bold text-primary"><i class="fas fa-toggle-on me-2"></i>Estado del Producto</label>
+                        <label class="form-label fw-bold text-primary"><i class="fas fa-toggle-on me-2">Estado del Producto</i></label>
                         <select th:field="*{estado}" class="form-select border-primary shadow-sm">
                             <option th:each="est : ${estados}" th:value="${est}" th:text="${est}"></option>
                         </select>
                     </div>
 
                     <div class="col-12 mb-3">
-                        <label class="form-label fw-bold"><i class="fas fa-microscope me-2"></i>Observaciones / Detalles Técnicos</label>
+                        <label class="form-label fw-bold"><i class="fas fa-microscope me-2">Observaciones / Detalles Técnicos</i></label>
                         <textarea th:field="*{observaciones}" class="form-control" rows="3" placeholder="Detalles de la piedra, procedencia, etc."></textarea>
                     </div>
                 </div>
 
                 <div class="mt-4 d-flex gap-2">
                     <button type="submit" class="btn btn-success px-4">
-                        <i class="fas fa-save me-2"></i>Guardar Producto
+                        <i class="fas fa-save me-2">Guardar Producto</i>
                     </button>
                     <a th:href="@{/productos}" class="btn btn-secondary px-4">
-                        <i class="fas fa-arrow-left me-2"></i>Cancelar
+                        <i class="fas fa-arrow-left me-2">Cancelar</i>
                     </a>
                 </div>
             </form>
