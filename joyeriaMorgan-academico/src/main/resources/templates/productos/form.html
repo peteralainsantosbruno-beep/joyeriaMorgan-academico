@@ -33,18 +33,26 @@
 
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-bold"><i class="fas fa-fill-drip me-2">Material</i></label>
-                        <input type="text" th:field="*{material}" class="form-control" th:errorclass="'is-invalid'" placeholder="Ej: Oro 18k, Plata 950...">
+						<select th:field="*{material}" class="form-select" th:errorclass="'is-invalid'">
+						    <option value="">-- Seleccionar Material --</option>
+						    <option value="ORO">Oro</option>
+						    <option value="PLATA">Plata</option>
+						</select>
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></div>
                     </div>
 
                     <div class="col-12 mb-3">
                         <label class="form-label fw-bold"><i class="fas fa-align-left me-2">Descripción Corta</i></label>
-                        <input type="text" th:field="*{descripcion}" class="form-control" placeholder="Nombre comercial del producto">
+                        <input type="text" th:field="*{descripcion}" class="form-control" placeholder="Nombre del modelo">
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label class="form-label fw-bold"><i class="fas fa-certificate me-2">Quilates</i></label>
-                        <input type="number" step="0.01" th:field="*{quilates}" class="form-control" th:errorclass="'is-invalid'">
+						<select th:field="*{quilates}" class="form-select">
+						    <option value="">-- Seleccionar Quilates --</option>
+						    <option value="14">14K</option>
+						    <option value="18">18K</option>
+						</select>
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('quilates')}" th:errors="*{quilates}"></div>
                     </div>
 
@@ -69,7 +77,7 @@
 
                     <div class="col-12 mb-3">
                         <label class="form-label fw-bold"><i class="fas fa-microscope me-2">Observaciones / Detalles Técnicos</i></label>
-                        <textarea th:field="*{observaciones}" class="form-control" rows="3" placeholder="Detalles de la piedra, procedencia, etc."></textarea>
+                        <textarea th:field="*{observaciones}" class="form-control" rows="3" placeholder="Detalles de la piedra, color, etc."></textarea>
                     </div>
                 </div>
 
