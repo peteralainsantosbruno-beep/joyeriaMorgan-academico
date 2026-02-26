@@ -1,60 +1,61 @@
 package com.joyeria.service.impl;
 
-import com.joyeria.model.Cliente;
-import com.joyeria.repository.ClienteRepository;
+import com.joyeria.model.*;
+import com.joyeria.repository.*;
 import com.joyeria.service.ReporteService;
-import com.lowagie.text.*;
-import com.lowagie.text.pdf.*;
+import com.joyeria.dto.ComprobanteDTO;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.io.ByteArrayOutputStream;
-import java.util.List;
+import java.io.InputStream;
+import java.util.*;
 
 @Service
 public class ReporteServiceImpl implements ReporteService {
 
     @Autowired
-    private ClienteRepository clienteRepo;
+    private ProductoRepository productoRepo;
+
+    @Autowired
+    private VentaRepository ventaRepo;
 
     @Override
-    public byte[] generarReporteClientesPdf() {
-        ByteArrayOutputStream salida = new ByteArrayOutputStream();
-        Document documento = new Document(PageSize.A4);
+    public byte[] generarReporteInventarioPdf() throws Exception {
+        List<Producto> lista = productoRepo.findAll();
         
-        try {
-            PdfWriter.getInstance(documento, salida);
-            documento.open();
+        InputStream stream = getClass().getResourceAsStream("/reportes/inventario.jrxml");
 
-            Font fuenteTitulo = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 16);
-            Paragraph titulo = new Paragraph("LISTADO DE CLIENTES - JOYERÍA MORGAN", fuenteTitulo);
-            titulo.setAlignment(Element.ALIGN_CENTER);
-            documento.add(titulo);
-            documento.add(new Paragraph(" "));
+        Map<String, Object> params = new HashMap<>();
+        params.put("p_titulo", "INVENTARIO GENERAL - JOYERÍA MORGAN");
+        params.put("p_fechaActual", java.time.LocalDate.now().toString());
 
-            PdfPTable tabla = new PdfPTable(4);
-            tabla.setWidthPercentage(100);
-            
-            tabla.addCell("DNI");
-            tabla.addCell("Nombres");
-            tabla.addCell("Apellidos");
-            tabla.addCell("Teléfono");
+        JasperPrint print = JasperFillManager.fillReport(stream, params, new JRBeanCollectionDataSource(lista));
+        return JasperExportManager.exportReportToPdf(print);
+    }
 
-            List<Cliente> clientes = clienteRepo.findAll();
-            for (Cliente c : clientes) {
-                tabla.addCell(c.getDni());
-                tabla.addCell(c.getNombres());
-                tabla.addCell(c.getApellidos());
-                tabla.addCell(c.getTelefono());
-            }
+    @Override
+    public byte[] generarBoletaVentaPdf(Long idProducto) throws Exception {
+        Venta v = ventaRepo.findAll().stream()
+                .filter(venta -> venta.getProducto().getId().equals(idProducto))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("No existe una venta para este producto"));
 
-            documento.add(tabla);
-            documento.close();
+        InputStream stream = getClass().getResourceAsStream("/reportes/boleta.jrxml");
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Map<String, Object> params = new HashMap<>();
+        params.put("p_idVenta", v.getId());
+        params.put("p_nombreCliente", v.getCliente().getNombres() + " " + v.getCliente().getApellidos());
+        params.put("p_dniCliente", v.getCliente().getDni());
+        params.put("p_fecha", v.getFecha().toString());
+        params.put("p_total", v.getTotal());
 
-        return salida.toByteArray();
+        String descCompleta = v.getProducto().getTipo() + " " + v.getProducto().getMaterial();
+        List<ComprobanteDTO> detalle = Collections.singletonList(
+            new ComprobanteDTO(1, descCompleta, v.getProducto().getPrecio(), v.getTotal())
+        );
+
+        JasperPrint print = JasperFillManager.fillReport(stream, params, new JRBeanCollectionDataSource(detalle));
+        return JasperExportManager.exportReportToPdf(print);
     }
 }

@@ -1,0 +1,117 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="ComprobanteCompletoMorgan" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5d04d053-a720-410f-866e-151280a8af49">
+	<parameter name="p_idVenta" class="java.lang.Long"/>
+	<parameter name="p_nombreCliente" class="java.lang.String"/>
+	<parameter name="p_dniCliente" class="java.lang.String"/>
+	<parameter name="p_fecha" class="java.lang.String"/>
+	<parameter name="p_total" class="java.lang.Double"/>
+	<field name="cantidad" class="java.lang.Integer"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="precioUnitario" class="java.lang.Double"/>
+	<field name="importe" class="java.lang.Double"/>
+	<title height="125">
+		<element kind="staticText" uuid="d25771c6-1c52-4dc8-83fa-cf7616e7829f" x="50" y="0" width="278" height="40" forecolor="#D4AF37" fontSize="26.0" bold="true" vTextAlign="Middle">
+			<text><![CDATA[JOYERÍA MORGAN]]></text>
+		</element>
+		<element kind="staticText" uuid="ea7f1f6e-4cdb-496e-a672-c902e3042900" x="0" y="45" width="350" height="15" fontSize="10.0" bold="true">
+			<text><![CDATA[RUC: 10083535666]]></text>
+		</element>
+		<element kind="staticText" uuid="decb488f-11eb-4f64-abab-114cf3197056" x="0" y="60" width="350" height="15" fontSize="9.0">
+			<text><![CDATA[Dirección: Av. Benavides 3601, Santiago de Surco - Lima]]></text>
+		</element>
+		<element kind="staticText" uuid="34f24152-0880-47a8-9ba5-49de0e5888de" x="0" y="75" width="350" height="15" fontSize="9.0">
+			<text><![CDATA[Teléfono: (01) 445-8890 | Web: www.joyeriamorgan.com]]></text>
+		</element>
+		<element kind="rectangle" uuid="98d6630b-cbd9-4806-87d2-584a4f05c48c" x="370" y="0" width="185" height="90">
+			<pen lineWidth="2.0" lineColor="#D4AF37"/>
+		</element>
+		<element kind="staticText" uuid="2de2f83b-8b50-4dc5-8aaf-8d4523c256e7" x="370" y="10" width="185" height="20" fontSize="12.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[RUC: 10083535666]]></text>
+		</element>
+		<element kind="staticText" uuid="a3446e9f-3792-4e16-bc30-2bb67bd40141" x="370" y="30" width="185" height="25" backcolor="#F5F5F5" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[BOLETA DE VENTA]]></text>
+		</element>
+		<element kind="textField" uuid="2e8b8608-2abb-44ac-a00e-a7a9d796a5ec" x="370" y="60" width="185" height="20" forecolor="#FF0000" fontSize="14.0" bold="true" hTextAlign="Center">
+			<expression><![CDATA["N° 001 - " + String.format("%06d", $P{p_idVenta})]]></expression>
+		</element>
+	</title>
+	<pageHeader height="70">
+		<element kind="staticText" uuid="73f2756d-b647-4ece-ae17-fb43c441eed1" x="0" y="5" width="80" height="15" bold="true">
+			<text><![CDATA[CLIENTE:]]></text>
+		</element>
+		<element kind="textField" uuid="4af0d2e4-8394-4b0a-af21-066eb89d42a7" x="85" y="5" width="250" height="15">
+			<expression><![CDATA[$P{p_nombreCliente}]]></expression>
+		</element>
+		<element kind="staticText" uuid="ff6244b1-a484-424b-a4cb-f7584a0abd0b" x="0" y="25" width="80" height="15" bold="true">
+			<text><![CDATA[DNI/RUC:]]></text>
+		</element>
+		<element kind="textField" uuid="f4992f99-6e8c-4bc9-88c7-27351b9c18d6" x="85" y="25" width="250" height="15">
+			<expression><![CDATA[$P{p_dniCliente}]]></expression>
+		</element>
+		<element kind="staticText" uuid="ebb384b1-0ea4-4eba-88a4-9325abbd1a7c" x="380" y="5" width="50" height="15" bold="true">
+			<text><![CDATA[FECHA:]]></text>
+		</element>
+		<element kind="textField" uuid="9741ae16-bfd1-4594-9f89-0b923ce25a1b" x="435" y="5" width="120" height="15">
+			<expression><![CDATA[$P{p_fecha}]]></expression>
+		</element>
+	</pageHeader>
+	<columnHeader height="25">
+		<element kind="rectangle" uuid="68cb6926-834e-423a-a94f-b5090e6dc32e" x="0" y="0" width="555" height="25" backcolor="#E0E0E0">
+			<pen lineWidth="0.5"/>
+		</element>
+		<element kind="staticText" uuid="4fe1fe71-7bd9-47b7-bd0d-d48902b2a74d" x="0" y="0" width="60" height="25" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[CANT.]]></text>
+		</element>
+		<element kind="staticText" uuid="20a9f1b9-c796-4cec-aaaa-c7cfa655a645" x="60" y="0" width="290" height="25" bold="true" vTextAlign="Middle">
+			<text><![CDATA[ DESCRIPCIÓN]]></text>
+		</element>
+		<element kind="staticText" uuid="538bf75b-95a3-4091-9465-eb74e4e1aa36" x="350" y="0" width="100" height="25" bold="true" hTextAlign="Right" vTextAlign="Middle">
+			<text><![CDATA[V. UNITARIO ]]></text>
+		</element>
+		<element kind="staticText" uuid="30675174-a14b-4cb8-a2e3-9a7e03363927" x="450" y="0" width="105" height="25" bold="true" hTextAlign="Right" vTextAlign="Middle">
+			<text><![CDATA[IMPORTE ]]></text>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="25">
+			<element kind="textField" uuid="b75a4b2c-e7cb-44c8-bee0-e0c19388783d" x="0" y="0" width="60" height="20" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{cantidad}]]></expression>
+				<box>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="c0edfc84-9936-43c4-a592-adff411918b5" x="65" y="0" width="285" height="20" vTextAlign="Middle">
+				<expression><![CDATA[$F{descripcion}]]></expression>
+				<box>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="bffbd404-fe62-49aa-9bc7-9e688482bd71" x="350" y="0" width="100" height="20" pattern="S/ #,##0.00" hTextAlign="Right" vTextAlign="Middle">
+				<expression><![CDATA[$F{precioUnitario}]]></expression>
+				<box>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="0d8ee24a-35d1-483d-84b9-68505e63ecc6" x="450" y="0" width="100" height="20" pattern="S/ #,##0.00" hTextAlign="Right" vTextAlign="Middle">
+				<expression><![CDATA[$F{importe}]]></expression>
+				<box>
+					<bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+				</box>
+			</element>
+		</band>
+	</detail>
+	<summary height="80">
+		<element kind="line" uuid="d2e01a41-e00a-4759-b309-e8b37371a585" x="0" y="5" width="555" height="1" forecolor="#D4AF37">
+			<pen lineWidth="1.5"/>
+		</element>
+		<element kind="staticText" uuid="8fc1bb87-477c-4ce4-a4a2-756da587e3b0" x="350" y="10" width="100" height="30" fontSize="14.0" bold="true" hTextAlign="Right" vTextAlign="Middle">
+			<text><![CDATA[TOTAL:  ]]></text>
+		</element>
+		<element kind="textField" uuid="d36b9edb-bba1-4cf9-9400-d256d0adea96" x="450" y="10" width="105" height="30" forecolor="#D4AF37" fontSize="16.0" pattern="S/ #,##0.00" bold="true" hTextAlign="Right" vTextAlign="Middle">
+			<expression><![CDATA[$P{p_total}]]></expression>
+		</element>
+		<element kind="staticText" uuid="9bf8899c-7315-43d2-b872-a865b973eb62" x="0" y="50" width="555" height="20" fontSize="8.0" italic="true" hTextAlign="Center">
+			<text><![CDATA[Gracias por su confianza en Joyería Morgan. Este documento no tiene valor tributario oficial.]]></text>
+		</element>
+	</summary>
+</jasperReport>

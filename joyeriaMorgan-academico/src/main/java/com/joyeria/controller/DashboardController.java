@@ -51,7 +51,6 @@ public class DashboardController {
                 }
             }
         }
-
         model.addAttribute("totalProductos", totalProductos);
         model.addAttribute("disponibles", disponibles);
         model.addAttribute("inventario", inventario);

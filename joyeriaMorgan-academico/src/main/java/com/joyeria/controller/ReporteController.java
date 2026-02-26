@@ -1,51 +1,30 @@
 package com.joyeria.controller;
 
-import com.joyeria.repository.VentaRepository;
+import com.joyeria.service.ReporteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
 
-import java.text.DateFormatSymbols;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-@Controller
+@RestController
+@RequestMapping("/reportes")
 public class ReporteController {
 
     @Autowired
-    private VentaRepository ventaRepository;
+    private ReporteService reporteService;
 
-    @GetMapping("/reportes")
-    public String verReporte(Model model) {
-        List<Object[]> datos = ventaRepository.ventasPorMes();
+    @GetMapping("/inventario")
+    public ResponseEntity<byte[]> descargarInventario() throws Exception {
+        byte[] pdf = reporteService.generarReporteInventarioPdf();
+        HttpHeaders headers = new HttpHeaders();
+        headers.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=Inventario_Morgan.pdf");
+        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(pdf);
+    }
 
-        List<String> mesesNombres = new ArrayList<>();
-        List<Double> totales = new ArrayList<>();
-
-        if (datos != null && !datos.isEmpty()) {
-            String[] nombresMeses = new DateFormatSymbols(new Locale("es", "ES")).getMonths();
-
-            for (Object[] fila : datos) {
-                if (fila != null && fila[0] != null && fila[1] != null) {
-                    try {
-                        int mesIndice = ((Number) fila[0]).intValue() - 1; 
-                        
-                        if (mesIndice >= 0 && mesIndice < 12) {
-                            mesesNombres.add(nombresMeses[mesIndice]);
-                            totales.add(((Number) fila[1]).doubleValue());
-                        }
-                    } catch (Exception e) {
-                        continue;
-                    }
-                }
-            }
-        }
-
-        model.addAttribute("meses", mesesNombres);
-        model.addAttribute("totales", totales);
-
-        return "reportes"; 
+    @GetMapping("/boleta/{id}")
+    public ResponseEntity<byte[]> descargarBoleta(@PathVariable Long id) throws Exception {
+        byte[] pdf = reporteService.generarBoletaVentaPdf(id);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=Boleta_Producto_" + id + ".pdf");
+        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(pdf);
     }
 }

@@ -1,5 +1,6 @@
 package com.joyeria.service;
 
 public interface ReporteService {
-    byte[] generarReporteClientesPdf();
+    byte[] generarReporteInventarioPdf() throws Exception;
+    byte[] generarBoletaVentaPdf(Long idVenta) throws Exception;
 }
